@@ -10,4 +10,5 @@ blocks:
       jobs:
         - name: Run some code
           commands:
-            - python -c 'print("evol"[::-1])'
+            - checkout
+            - ls
