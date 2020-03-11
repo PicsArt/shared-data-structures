@@ -16,8 +16,7 @@ def test_correctness():
     checksum = sha1(np_array).hexdigest()
     executor = ProcessPoolExecutor()
     future = executor.submit(fn=process2,
-                             shm_descriptor=shm_array.to_json(),
-                             array_checksum=checksum)
+                             shm_descriptor=shm_array.to_json())
 
     process2_checksum = future.result()
     assert checksum == process2_checksum
