@@ -14,5 +14,5 @@ blocks:
         - name: Deploy
           commands:
             - checkout
-            - pip3 install tox
+            - pip install tox
             - tox
