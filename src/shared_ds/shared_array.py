@@ -66,15 +66,19 @@ class SharedArray(object):
 
     @classmethod
     def from_array(cls, array: np.ndarray):
-        shared_mem_uuid = str(uuid.uuid4())[16:]
+        if type(array) is np.ndarray:
+            shared_mem_uuid = str(uuid.uuid4())[16:]
 
-        shared_memory = posix_ipc.SharedMemory(name=shared_mem_uuid, flags=posix_ipc.O_CREX, size=array.nbytes, read_only=False)
-        memory_buffer = mmap.mmap(shared_memory.fd, shared_memory.size)
-        memory_buffer.write(array.data)
+            shared_memory = posix_ipc.SharedMemory(name=shared_mem_uuid, flags=posix_ipc.O_CREX, size=array.nbytes, read_only=False)
+            memory_buffer = mmap.mmap(shared_memory.fd, shared_memory.size)
+            memory_buffer.write(array.data)
 
-        data = np.ndarray(buffer=memory_buffer,
-                          dtype=array.dtype,
-                          shape=array.shape)
+            data = np.ndarray(buffer=memory_buffer,
+                              dtype=array.dtype,
+                              shape=array.shape)
+        else:
+            raise ValueError("array should be of type np.ndarray "
+                             "instead of {}".format(type(array)))
         return cls(data=data,
                    shared_memory=shared_memory,
                    memory_buffer=memory_buffer)
