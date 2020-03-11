@@ -10,6 +10,9 @@ blocks:
       env_vars:
         - name: GOOGLE_PROJECT_ID
           value: picsartgc
+      secrets:
+        - name: GCP
+
       prologue:
         commands:
           # Set the python version.
