@@ -10,9 +10,14 @@ blocks:
       env_vars:
         - name: GOOGLE_PROJECT_ID
           value: picsartgc
+      prologue:
+        commands:
+          # Set the python version.
+          # See https://docs.semaphoreci.com/article/132-sem-service-managing-databases-and-services-on-linux
+          - sem-version python 3.7
+          - pip3.7 install tox
       jobs:
         - name: Deploy
           commands:
             - checkout
-            - pip3.7 install tox
             - tox
