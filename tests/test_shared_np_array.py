@@ -19,7 +19,7 @@ def test_correctness():
                              shm_descriptor=shm_array.to_json(),
                              array_checksum=checksum)
 
-    process2_checksum = future.result()+'2'
+    process2_checksum = future.result()
     assert checksum == process2_checksum
 
 
