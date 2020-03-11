@@ -1,14 +1,17 @@
 version: v1.0
-name: Python example
+name: "Deploy Upscale Service Build and Deploy"
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Hello world
+  - name: Deploy
     task:
+      env_vars:
+        - name: GOOGLE_PROJECT_ID
+          value: picsartgc
       jobs:
-        - name: Run some code
+        - name: Deploy
           commands:
             - checkout
-            - ls
+            - tox
