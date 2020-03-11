@@ -1,7 +1,7 @@
 # Shared Memory Data Structure
 This package allows you to use your data structures like numpy arrays in the 
 shared memory environment between two or more python processes. This library
-simplify the use of shared memory data structures as you don't need to manually
+simplifies the use of shared memory data structures as you don't need to manually
 manage shared memory.
 
 # E.g:
