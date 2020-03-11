@@ -1,15 +1,13 @@
 version: v1.0
-name: Python
+name: Python example
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Test
+  - name: Hello world
     task:
       jobs:
-        - name: pytest
+        - name: Run some code
           commands:
-            - sem-version python $PYTHON_VERSION
-            - checkout
-            - tox
+            - python -c 'print("evol"[::-1])'
