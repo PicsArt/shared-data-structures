@@ -1,0 +1,26 @@
+version: v1.0
+name: "Build and Unit Test SharedDS"
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Deploy
+    task:
+      env_vars:
+        - name: PROJECT_NAME
+          value: SHARED_DATA_STRUCTURES
+      secrets:
+        - name: PYPI
+
+      prologue:
+        commands:
+          - sem-version python 3.7
+          - pip3.7 install twine
+      jobs:
+        - name: Deploy
+          commands:
+            - checkout
+            - python3.7 setup.py sdist bdist_wheel
+            - twine check ./dist/
+            - twine upload ./dist/*.* -u ${USER} -p ${PASS}

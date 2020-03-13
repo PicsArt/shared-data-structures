@@ -6,7 +6,7 @@ POSIX_IP_MIN_VERSION = '1.0.4'
 
 
 setup(name='shared_ds',
-      version='0.1',
+      version='0.0.1',
       description='Provide shared memory data structures!',
       url='http://github.com/storborg/kalksdjlkasdkl',
       author='Vigen Sahakyan',
