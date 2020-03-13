@@ -23,4 +23,4 @@ blocks:
             - checkout
             - python3.7 setup.py sdist bdist_wheel --universal
             - twine check ./dist/
-            - twine upload ./dist/*.* -u ${USER} -p ${PASS}
+            - twine upload ./dist/ -u ${USER} -p ${PASS}
