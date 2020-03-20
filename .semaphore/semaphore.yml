@@ -5,7 +5,7 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Deploy
+  - name: Unit test
     task:
       env_vars:
         - name: PROJECT_NAME

@@ -134,4 +134,3 @@ class SharedArray(object):
 
     def __del__(self):
         self.__unlink()
-

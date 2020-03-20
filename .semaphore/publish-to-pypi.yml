@@ -1,11 +1,11 @@
 version: v1.0
-name: "Build and Unit Test SharedDS"
+name: "Build and Publish SharedDS"
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Deploy
+  - name: Publish to PyPi
     task:
       env_vars:
         - name: PROJECT_NAME
