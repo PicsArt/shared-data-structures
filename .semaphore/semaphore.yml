@@ -1,24 +1,26 @@
 version: v1.0
-name: Python
+name: "Build and Unit Test SharedDS"
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Test
+  - name: Unit test
     task:
+      env_vars:
+        - name: PROJECT_NAME
+          value: SHARED_DATA_STRUCTURES
+
+      prologue:
+        commands:
+          - sem-version python 3.7
+          - pip3.7 install tox
       jobs:
-        - name: pytest
-          matrix:
-            - env_vars: PYTHON_VERSION
-              values: ["2.7", "3.5", "3.6", "3.7"]
+        - name: Deploy
           commands:
-            - sem-version python $PYTHON_VERSION
             - checkout
-            - python -m pip install --upgrade pip
-            - pip install -r requirements.txt
-            - pip install flake8
-            - flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-            - flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-            - pip install pytest
-            - pytest
+            - tox
+
+promotions:
+  - name: Publish
+    pipeline_file: "publish-to-pypi.yml"

@@ -4,10 +4,14 @@ from setuptools import find_packages
 NUMPY_MIN_VERSION = '1.16.4'
 POSIX_IP_MIN_VERSION = '1.0.4'
 
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
 setup(name='shared_ds',
-      version='0.1',
+      version='0.0.3',
       description='Provide shared memory data structures!',
+      long_description=long_description,
+      long_description_content_type="text/markdown",
       url='http://github.com/storborg/kalksdjlkasdkl',
       author='Vigen Sahakyan',
       author_email='vigen.sahakyan@picsart.com',
