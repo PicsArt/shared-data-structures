@@ -8,11 +8,11 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name='shared_ds',
-      version='0.0.3',
+      version='0.0.4',
       description='Provide shared memory data structures!',
       long_description=long_description,
       long_description_content_type="text/markdown",
-      url='http://github.com/storborg/kalksdjlkasdkl',
+      url='https://github.com/PicsArt/shared-data-structures',
       author='Vigen Sahakyan',
       author_email='vigen.sahakyan@picsart.com',
       license='MIT',
