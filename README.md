@@ -4,7 +4,7 @@ shared memory environment between two or more python processes. This library
 simplifies the use of shared memory data structures as you don't need to manually
 manage shared memory.
 
-# E.g:
+# SharedArray example:
 ## Process #1
 ```python
 from shared_ds import SharedArray
