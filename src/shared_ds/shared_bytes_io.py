@@ -70,3 +70,6 @@ class SharedBytesIO(object):
 
     def get_data(self):
         return self.memory_buffer.read(self.bytes_count)
+    
+    def __del__(self):
+        self.__unlink()
