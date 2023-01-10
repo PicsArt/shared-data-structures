@@ -1,16 +1,21 @@
-import posix_ipc
-import mmap
-import numpy as np
-import uuid
 import json
+import mmap
+import platform
+import uuid
+
+import numpy as np
+import posix_ipc
 
 numpy_types = dict(bool=np.bool, bool8=np.bool8, bool_=np.bool_, uint8=np.uint8,
                    uint16=np.uint16, uint32=np.uint32, uint64=np.uint64,
                    int_=np.int_, intc=np.intc, intp=np.intp, int=np.int,
                    int8=np.int8, int16=np.int16, int32=np.int32, int64=np.int64,
                    float_=np.float_, float=np.float, float16=np.float16,
-                   float32=np.float32, float64=np.float64, float128=np.float128,
+                   float32=np.float32, float64=np.float64,
                    complex64=np.complex64, complex128=np.complex128)
+
+if str(platform.system()).lower() == 'darwin' and str(platform.machine()).lower() != 'arm64':
+    numpy_types['float128'] = np.float128
 
 
 class SharedArray(object):
