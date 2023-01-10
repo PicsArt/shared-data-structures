@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name='shared_ds',
-      version='0.0.5',
+      version='0.0.6',
       description='Provide shared memory data structures!',
       long_description=long_description,
       long_description_content_type="text/markdown",
